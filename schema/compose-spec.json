@@ -296,6 +296,12 @@
                         "ipv6_address": {"type": "string"},
                         "link_local_ips": {"$ref": "#/definitions/list_of_strings"},
                         "mac_address": {"type": "string"},
+                        "driver_opts": {
+                          "type": "object",
+                          "patternProperties": {
+                            "^.+$": {"type": ["string", "number"]}
+                          }
+                        },
                         "priority": {"type": "number"}
                       },
                       "additionalProperties": false,
@@ -459,6 +465,7 @@
           "type": "array",
           "items": {
             "type": "object",
+            "required": ["path", "action"],
             "properties": {
               "ignore": {"type": "array", "items": {"type": "string"}},
               "path": {"type": "string"},
@@ -466,7 +473,6 @@
               "target": {"type": "string"}
             }
           },
-          "required": ["path", "action"],
           "additionalProperties": false,
           "patternProperties": {"^x-": {}}
         }
